@@ -1,0 +1,27 @@
+---
+bibliography: references.bib
+---
+
+
+# Candidate 1
+
+This content was written manually.
+Note you can still include references [@lovelace_geocomputation_2019].
+
+## Demonstration of learning outcomes
+
+## Reproducibility
+
+To reproduce the analysis, I tried to run the following commands:
+
+```{r, eval=FALSE}
+
+
+```
+
+
+## Positives
+
+## Areas for improvement
+
+## Ideas for further research

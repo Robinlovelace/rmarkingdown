@@ -1,0 +1,24 @@
+---
+bibliography: references.bib
+---
+
+
+# Candidate
+
+## Demonstration of learning outcomes
+
+## Reproducibility
+
+To reproduce the analysis, I tried to run the following commands:
+
+```{r, eval=FALSE}
+
+
+```
+
+
+## Positives
+
+## Areas for improvement
+
+## Ideas for further research
