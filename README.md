@@ -103,67 +103,48 @@ You can also read-in a feedback template (recommended for modularity):
 ``` r
 feedback_template = readLines("feedback-template.Rmd") # from known source
 
-n_groups = 3
+n_submissions = 3
 
-group_numbers = formatC(x = 1:n_groups, width = 2, flag = 0)
-lapply(group_numbers, dir.create)
-group_names = paste0("group", group_numbers, ".Rmd")
+submission_numbers = formatC(x = 1:n_submissions, width = 2, flag = 0)
+lapply(submission_numbers, dir.create)
+submission_names = paste0("submission", submission_numbers, ".Rmd")
 
 # test writing template file
 write_template = function(x) {
   writeLines(text = feedback_template, con = x)
 }
-write_template(group_names[1])
-rmarkdown::render("group01.Rmd")
+write_template(submission_names[1])
+rmarkdown::render("submission01.Rmd")
 ```
 
 You can explore the template results before writing detailed feedback as
 follows:
 
 ``` r
-browseURL("group01.html") # looks good
+browseURL("submission01.html") # looks good
 ```
 
-And create the template for all groups like this:
+And create the template for all submissions like this:
 
 ``` r
 # create all template files
-purrr::map(group_names, ~write_template(.))
+purrr::map(submission_names, ~write_template(.))
 ```
 
 # Feedback
 
-After running the above code chunks mark each group by editing each .Rmd
-file, e.g. with:
+After running the above code chunks mark each submission by editing each
+.Rmd file, e.g. with:
 
 ``` r
-file.edit("group01.Rmd") # mark group1
-file.edit("group02.Rmd") # mark group2
-file.edit("group03.Rmd") # mark group3
+file.edit("submission01.Rmd") # mark submission1
+file.edit("submission02.Rmd") # mark submission2
+file.edit("submission03.Rmd") # mark submission3
 ```
 
 This can then be included with the following chunk setting:
 
-    {r test-main1, child = 'group01.Rmd'}
-
-# Candidate 1
-
-This content was written manually. Note you can still include references
-(Lovelace, Nowosad, and Muenchow 2019).
-
-## Demonstration of learning outcomes
-
-## Reproducibility
-
-To reproduce the analysis, I tried to run the following commands:
-
-## Positives
-
-## Areas for improvement
-
-## Ideas for further research
-
-# Group 2: no submission
+    {r test-main1, child = 'submission01.Rmd'}
 
 # Candidate
 
@@ -179,12 +160,28 @@ To reproduce the analysis, I tried to run the following commands:
 
 ## Ideas for further research
 
-# Auto-generating group chunks
+# submission 2: no submission
+
+# Candidate
+
+## Demonstration of learning outcomes
+
+## Reproducibility
+
+To reproduce the analysis, I tried to run the following commands:
+
+## Positives
+
+## Areas for improvement
+
+## Ideas for further research
+
+# Auto-generating submission chunks
 
 Another step that can be automated is generating the Rmarkdown chunks
-for each group. This can be done as follows:
+for each submission. This can be done as follows:
 
-    make_chunk_group = function(n) {
+    make_chunk_submission = function(n) {
     
     paste0("
     
@@ -192,15 +189,15 @@ for each group. This can be done as follows:
     
     ")
     }
-    make_chunk_group("01")
+    make_chunk_submission("01")
     
-    make_chunk_groups = function(group_numbers) {
-      purrr::map_chr(group_numbers, make_chunk_group)
+    make_chunk_submissions = function(submission_numbers) {
+      purrr::map_chr(submission_numbers, make_chunk_submission)
     }
     
-    chunk_groups_text = make_chunk_groups(group_numbers)
-    writeLines(chunk_groups_text, "chunk_groups_text.Rmd")
-    file.edit("chunk_groups_text.Rmd")
+    chunk_submissions_text = make_chunk_submissions(submission_numbers)
+    writeLines(chunk_submissions_text, "chunk_submissions_text.Rmd")
+    file.edit("chunk_submissions_text.Rmd")
 
 ## References
 
@@ -211,13 +208,6 @@ for each group. This can be done as follows:
 Allaire, JJ, Yihui Xie, Jonathan McPherson, Javier Luraschi, Kevin
 Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, and Winston Chang. 2018.
 *Rmarkdown: Dynamic Documents for R*.
-
-</div>
-
-<div id="ref-lovelace_geocomputation_2019">
-
-Lovelace, Robin, Jakub Nowosad, and Jannes Muenchow. 2019.
-*Geocomputation with R*. CRC Press.
 
 </div>
 

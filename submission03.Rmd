@@ -3,10 +3,7 @@ bibliography: references.bib
 ---
 
 
-# Candidate 1
-
-This content was written manually.
-Note you can still include references [@lovelace_geocomputation_2019].
+# Candidate
 
 ## Demonstration of learning outcomes
 
