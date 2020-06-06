@@ -15,6 +15,28 @@ bibliography: references.bib
 knitr::opts_chunk$set()
 ```
 
+# Quickstart {-}
+
+To get started with this template:
+
+- Create a new RStudio project in a suitable place and with a suitable name, e.g. `~/modules/tds/marks-2020` and open it up.
+- Download and unzip the contents of this template with the following commands in the new project:
+
+```{r, eval=FALSE}
+u = "https://github.com/Robinlovelace/rmarkingdown/archive/master.zip"
+download.file(u, "master.zip")
+unzip("master.zip")
+files_to_move = list.files(path = "rmarkingdown-master/", pattern = "*", full.names = TRUE)
+destinations = basename(files_to_move)
+file.copy(
+  from = files_to_move,
+  to = ".",
+  overwrite = FALSE, # avoid deleting files
+  recursive = TRUE
+  )
+```
+
+
 # Introduction {-}
 
 This document contains code and text for evaluating and providing feedback to students who submitted reports for the module [xxx](web-link).
@@ -65,16 +87,17 @@ Template feedback files were created as follows:
 feedback_template = "
 # Candidate
 
-## Demonstration of learning outcomes
-
-## Reproducibility
-
 ## Positives
 
-## Areas for improvement
-
 ## Ideas for further research
+
+## ...
 "
+```
+
+You can also read-in a feedback template (recommended for modularity):
+
+```{r ftemplate, eval=FALSE}
 feedback_template = readLines("feedback-template.Rmd") # from known source
 
 n_groups = 3

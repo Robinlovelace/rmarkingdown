@@ -2,6 +2,31 @@ Robin Lovelace
 
 # rmarkingdown
 
+# Quickstart
+
+To get started with this template:
+
+  - Create a new RStudio project in a suitable place and with a suitable
+    name, e.g. `~/modules/tds/marks-2020` and open it up.
+  - Download and unzip the contents of this template with the following
+    commands in the new project:
+
+<!-- end list -->
+
+``` r
+u = "https://github.com/Robinlovelace/rmarkingdown/archive/master.zip"
+download.file(u, "master.zip")
+unzip("master.zip")
+files_to_move = list.files(path = "rmarkingdown-master/", pattern = "*", full.names = TRUE)
+destinations = basename(files_to_move)
+file.copy(
+  from = files_to_move,
+  to = ".",
+  overwrite = FALSE, # avoid deleting files
+  recursive = TRUE
+  )
+```
+
 # Introduction
 
 This document contains code and text for evaluating and providing
@@ -23,8 +48,7 @@ under the following headings:
   - Reproducibility
   - Positives
   - Areas for improvement
-  - Ideas for further
-research
+  - Ideas for further research
 
 <!-- ## Learning outcomes -->
 
@@ -66,16 +90,17 @@ Template feedback files were created as follows:
 feedback_template = "
 # Candidate
 
-## Demonstration of learning outcomes
-
-## Reproducibility
-
 ## Positives
 
-## Areas for improvement
-
 ## Ideas for further research
+
+## ...
 "
+```
+
+You can also read-in a feedback template (recommended for modularity):
+
+``` r
 feedback_template = readLines("feedback-template.Rmd") # from known source
 
 n_groups = 3
@@ -179,7 +204,7 @@ for each group. This can be done as follows:
 
 ## References
 
-<div id="refs" class="references">
+<div id="refs" class="references hanging-indent">
 
 <div id="ref-R-rmarkdown">
 
